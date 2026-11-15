@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satyam Portfolio — Satyam Kumar | Creative Technology</title>
+<meta name="description" content="Satyam Kumar — I build digital experiences, create content and engineer AI-powered solutions. Video editing, websites, AI agents and products, built solo from Gaya, India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070d1f; --bg2:#0a1130; --panel:#0d1738; --panel2:#101d45;
+  --ink:#eef2ff; --muted:#9aa7cf; --line:rgba(154,167,207,.18);
+  --accent:#f59e0b; --accent2:#f97316;
+  --grad:linear-gradient(92deg,#fbbf24 0%,#f97316 55%,#ef4444 110%);
+  --radius:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;line-height:1.55}
+::selection{background:var(--accent);color:#131313}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.disp{font-family:'Archivo',sans-serif}
+.kicker{letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;font-weight:700;color:var(--accent)}
+section{padding:84px 0;position:relative}
+.sec-head{max-width:720px;margin-bottom:38px}
+.sec-head h2{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:900;line-height:1.05;text-transform:uppercase;margin:10px 0 12px}
+.sec-head p{color:var(--muted);font-size:1.02rem}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem;padding:13px 24px;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:.25s}
+.btn-solid{background:var(--grad);color:#161006}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(249,115,22,.35)}
+.btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+/* ---------- background fx ---------- */
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;pointer-events:none;z-index:0}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(154,167,207,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(154,167,207,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse 90% 60% at 50% 0%,#000 30%,transparent 75%);pointer-events:none}
+/* ---------- nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(7,13,31,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:26px;height:64px}
+.logo{font-family:'Archivo';font-weight:900;font-size:1.05rem;letter-spacing:.04em}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nav-links{display:flex;gap:22px;margin-left:auto;font-size:.9rem;font-weight:600;color:var(--muted)}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{margin-left:6px}
+.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+@media(max-width:860px){.nav-links{display:none}}
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 0;overflow:hidden}
+.hero-stage{position:relative;flex:1;display:flex;align-items:flex-end;justify-content:center;min-height:520px}
+.wordmark{position:absolute;left:50%;top:6%;transform:translateX(-50%);font-family:'Archivo';font-weight:900;font-size:clamp(4.2rem,17.5vw,15.5rem);line-height:.9;letter-spacing:.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.95;white-space:nowrap;user-select:none;z-index:1;text-shadow:none}
+.hero-photo{position:relative;z-index:2;height:min(62vh,600px);filter:drop-shadow(0 24px 60px rgba(0,0,0,.55));animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.chip{position:absolute;z-index:3;background:rgba(13,23,56,.85);border:1px solid var(--line);backdrop-filter:blur(8px);padding:9px 14px;border-radius:999px;font-size:.8rem;font-weight:600;display:flex;gap:8px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.chip b{color:var(--accent)}
+.chip-1{left:6%;top:34%}.chip-2{right:6%;top:26%}.chip-3{right:10%;bottom:24%}
+@media(max-width:760px){.chip-1{left:2%;top:30%}.chip-2{right:2%;top:20%}.chip-3{display:none}.hero-photo{height:52vh}}
+.hero-panel{position:relative;z-index:4;background:linear-gradient(180deg,rgba(7,13,31,0) 0%,rgba(7,13,31,.88) 30%,var(--bg) 100%);margin-top:-90px;padding:30px 0 54px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:end}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;line-height:1.15}
+.hero h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:.88rem;font-weight:600;margin:14px 0 20px}
+.meta-row span::before{content:"·";margin-right:18px;color:var(--accent)}
+.meta-row span:first-child::before{content:"";margin:0}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.flipper{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;transform:perspective(900px) rotateY(-7deg) rotateX(2deg);box-shadow:0 24px 50px rgba(0,0,0,.4)}
+.flipper .f-label{color:var(--muted);font-size:.85rem;font-weight:600}
+.flipper .f-role{font-family:'Archivo';font-weight:900;font-size:1.7rem;margin:4px 0 2px;min-height:2.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.flipper .f-count{font-size:.78rem;color:var(--muted);letter-spacing:.15em}
+.flip-anim{animation:flipIn .5s ease}
+@keyframes flipIn{from{opacity:0;transform:translateY(10px) rotateX(40deg)}to{opacity:1;transform:none}}
+/* ---------- stats ---------- */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.stats-in{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:28px 0}
+@media(max-width:760px){.stats-in{grid-template-columns:repeat(2,1fr)}}
+.stat{text-align:center;padding:8px}
+.stat .n{font-family:'Archivo';font-weight:900;font-size:clamp(1.6rem,3.4vw,2.3rem);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:var(--muted);font-size:.82rem;font-weight:600;margin-top:2px}
+/* ---------- visitor selector ---------- */
+.visitor{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.v-btn{padding:11px 20px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink);font-weight:600;font-size:.9rem;cursor:pointer;transition:.2s}
+.v-btn:hover{border-color:var(--accent)}
+.v-btn.active{background:var(--grad);color:#161006;border-color:transparent}
+.v-note{color:var(--muted);font-size:.95rem;margin-bottom:30px;min-height:1.5em}
+.v-note b{color:var(--ink)}
+/* ---------- division portals ---------- */
+.portals{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.portal{grid-column:span 2;background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;position:relative;overflow:hidden;transition:transform .35s ease,border-color .3s;transform-style:preserve-3d;will-change:transform}
+.portal:nth-child(4){grid-column:2/span 2}.portal:nth-child(5){grid-column:4/span 2}
+@media(max-width:900px){.portal,.portal:nth-child(4),.portal:nth-child(5){grid-column:span 3}}
+@media(max-width:600px){.portal,.portal:nth-child(4),.portal:nth-child(5){grid-column:span 6}}
+.portal::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 200px at var(--mx,50%) var(--my,0%),rgba(245,158,11,.14),transparent 65%);opacity:0;transition:.3s;pointer-events:none}
+.portal:hover::before{opacity:1}
+.portal:hover{border-color:rgba(245,158,11,.55)}
+.portal .num{font-family:'Archivo';font-weight:900;font-size:.85rem;letter-spacing:.2em;color:var(--accent)}
+.portal h3{font-size:1.28rem;font-weight:800;margin:10px 0 8px;line-height:1.2}
+.portal p{color:var(--muted);font-size:.92rem}
+.portal .tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tool{font-size:.72rem;font-weight:600;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--muted)}
+.portal .price{margin-top:16px;font-size:.85rem;font-weight:700}
+.portal .price span{color:var(--accent)}
+.portal.reco{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 18px 44px rgba(249,115,22,.18)}
+.reco-tag{position:absolute;top:16px;right:16px;background:var(--grad);color:#161006;font-size:.68rem;font-weight:800;letter-spacing:.08em;padding:5px 10px;border-radius:999px;display:none}
+.portal.reco .reco-tag{display:block}
+/* ---------- work ---------- */
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:820px){.work-grid{grid-template-columns:1fr}}
+.work-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.3s}
+.work-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.5)}
+.work-card .shot{aspect-ratio:16/10;overflow:hidden;background:#0a0f24}
+.work-card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s}
+.work-card:hover .shot img{transform:scale(1.04)}
+.work-body{padding:22px 24px 26px}
+.work-body .w-num{color:var(--accent);font-weight:800;font-size:.8rem;letter-spacing:.18em}
+.work-body h3{font-size:1.35rem;font-weight:800;margin:6px 0 8px}
+.work-body p{color:var(--muted);font-size:.94rem}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 18px}
+.status{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;padding:4px 10px;border-radius:999px;background:rgba(52,211,153,.14);color:#34d399;border:1px solid rgba(52,211,153,.35)}
+.status.dev{background:rgba(245,158,11,.12);color:var(--accent);border-color:rgba(245,158,11,.4)}
+.work-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+/* ---------- videos ---------- */
+.video-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:1000px){.video-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.video-grid{grid-template-columns:1fr}}
+.vcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.vcard video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000;display:block}
+.vcard.wide video{aspect-ratio:16/9}
+.vcard .v-body{padding:13px 15px 16px}
+.vcard h3{font-size:.95rem;font-weight:700;line-height:1.3}
+.vcard p{color:var(--muted);font-size:.8rem;margin-top:3px}
+/* ---------- lab ---------- */
+.lab-band{background:linear-gradient(150deg,#0d1a44,#0a1130);border:1px solid var(--line);border-radius:22px;padding:34px}
+.lab-tools{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+@media(max-width:820px){.lab-tools{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.lab-tools{grid-template-columns:1fr}}
+.lab-tool{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:15px 16px;font-size:.9rem}
+.lab-tool b{display:block;font-size:.95rem}
+.lab-tool span{color:var(--muted);font-size:.82rem}
+/* ---------- pricing ---------- */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr}}
+.price-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px}
+.price-card h3{font-size:1.15rem;font-weight:800}
+.price-card .from{color:var(--muted);font-size:.85rem;margin-top:10px}
+.price-card .amount{font-family:'Archivo';font-weight:900;font-size:2rem;margin:2px 0 12px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.price-card ul{list-style:none;color:var(--muted);font-size:.92rem}
+.price-card li{padding:7px 0;border-top:1px dashed var(--line);display:flex;justify-content:space-between;gap:10px}
+.price-card li b{color:var(--ink);white-space:nowrap}
+.price-note{color:var(--muted);font-size:.85rem;margin-top:16px}
+/* ---------- story ---------- */
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.levels{grid-template-columns:1fr}}
+.level{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.level h3{font-size:1.05rem;font-weight:800;margin-bottom:12px}
+.level ul{list-style:none;color:var(--muted);font-size:.93rem}
+.level li{padding:6px 0;border-top:1px dashed var(--line)}
+.level li:first-child{border-top:none}
+.about-text{max-width:760px;color:var(--muted);font-size:1.02rem;margin-bottom:34px}
+.about-text b{color:var(--ink)}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);background:var(--bg2);padding:70px 0 40px}
+.foot-cta{text-align:center;max-width:640px;margin:0 auto 46px}
+.foot-cta h2{font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:900;text-transform:uppercase;line-height:1.08;margin-bottom:14px}
+.foot-cta p{color:var(--muted);margin-bottom:24px}
+.socials{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.soc{padding:10px 18px;border:1px solid var(--line);border-radius:999px;font-size:.88rem;font-weight:600;transition:.2s}
+.soc:hover{border-color:var(--accent);color:var(--accent)}
+.foot-base{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);padding-top:22px}
+.tbc{font-family:'Archivo';font-weight:900;letter-spacing:.25em;color:var(--accent);text-align:center;font-size:.85rem;margin-bottom:26px}
+/* ---------- modal ---------- */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(3,6,16,.9);display:none;align-items:center;justify-content:center;padding:18px}
+.modal.open{display:flex}
+.modal-box{width:min(420px,100%);background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.modal-box video{width:100%;max-height:78vh;background:#000;display:block}
+.modal-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font-weight:700;font-size:.9rem}
+.modal-close{background:none;border:1px solid var(--line);color:var(--ink);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1rem}
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#home">SATYAM<span>PORTFOLIO</span></a>
+    <div class="nav-links">
+      <a href="#divisions">Divisions</a><a href="#work">Work</a><a href="#videos">Videos</a><a href="#pricing">Pricing</a><a href="#story">My Story</a>
+    </div>
+    <a class="btn btn-solid nav-cta" href="#contact" style="padding:10px 18px;font-size:.85rem">Start a project</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="grid-bg"></div>
+  <div class="orb" style="width:480px;height:480px;background:#f97316;top:-120px;right:-100px;opacity:.28"></div>
+  <div class="orb" style="width:380px;height:380px;background:#1d4ed8;bottom:10%;left:-140px;opacity:.35"></div>
+  <div class="hero-stage">
+    <div class="wordmark" aria-hidden="true">SATYAM</div>
+    <img class="hero-photo" src="assets/images/hero.png" alt="Satyam Kumar — founder and builder">
+    <div class="chip chip-1"><span class="live-dot"></span> Available for work</div>
+    <div class="chip chip-2">Founder — <b>Line Free India</b></div>
+    <div class="chip chip-3"><b>9</b> AI tools live &amp; free</div>
+  </div>
+  <div class="hero-panel">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker">Satyam Kumar · Creative Technology · Gaya, India</p>
+        <h1>I build digital experiences, create content &amp; engineer <em>AI-powered solutions.</em></h1>
+        <div class="meta-row"><span>BTech CSE, 1st Year</span><span>Founder &amp; CEO, Line Free India</span><span>Building in public since 2026</span></div>
+        <div class="hero-ctas">
+          <button class="btn btn-solid" id="playIntro" type="button">▶ Play Intro</button>
+          <a class="btn btn-ghost" href="#work">See my work ↓</a>
+        </div>
+      </div>
+      <div class="flipper" aria-live="polite">
+        <div class="f-label">I am a</div>
+        <div class="f-role" id="flipRole">Video Editor</div>
+        <div class="f-count" id="flipCount">01 / 04</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap stats-in">
+    <div class="stat"><div class="n">4</div><div class="l">Products live right now</div></div>
+    <div class="stat"><div class="n">9</div><div class="l">Free AI tools in the Lab</div></div>
+    <div class="stat"><div class="n">1,965+</div><div class="l">Lessons on CodeAtlas</div></div>
+    <div class="stat"><div class="n">20</div><div class="l">Day AI-tools video series</div></div>
+  </div>
+</div>
+
+<section id="divisions">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">The Studio</p>
+      <h2>Five doors. Pick one.</h2>
+      <p>One studio, five divisions. Every door opens into real work — live products, published videos and tools you can try right now. Tell me who is visiting and I will point you to the right door.</p>
+    </div>
+    <div class="visitor rv" role="group" aria-label="Who is visiting">
+      <button class="v-btn" data-v="business" type="button">I run a business</button>
+      <button class="v-btn" data-v="creator" type="button">I create content</button>
+      <button class="v-btn" data-v="student" type="button">I am a student</button>
+      <button class="v-btn" data-v="founder" type="button">I am building a startup</button>
+    </div>
+    <p class="v-note rv" id="vNote">Pick one above — I will highlight your door.</p>
+    <div class="portals">
+      <article class="portal rv" data-door="video" tabindex="0">
+        <span class="reco-tag">YOUR DOOR</span>
+        <div class="num">01</div>
+        <h3>Video &amp; Creative Studio</h3>
+        <p>Reels, Shorts and explainers that hold attention — hook-first pacing, clean cuts, word-by-word captions and edits built for the first three seconds.</p>
+        <div class="tools"><span class="tool">Short-form editing</span><span class="tool">AI avatar videos</span><span class="tool">UGC-style ad videos</span><span class="tool">Motion graphics</span></div>
+        <div class="price">Editing from <span>$10</span> · Retainers from <span>₹8,000/mo</span></div>
+      </article>
+      <article class="portal rv" data-door="web" tabindex="0">
+        <span class="reco-tag">YOUR DOOR</span>
+        <div class="num">02</div>
+        <h3>Web &amp; Digital Experiences</h3>
+        <p>Mobile-first websites and web apps that load fast and turn visitors into enquiries — WhatsApp buttons, maps, bilingual pages and clean design.</p>
+        <div class="tools"><span class="tool">React</span><span class="tool">Tailwind CSS</span><span class="tool">Firebase</span><span class="tool">Landing pages</span></div>
+        <div class="price">One-page sites from <span>₹12,000</span> · Fiverr from <span>$35</span></div>
+      </article>
+      <article class="portal rv" data-door="ai" tabindex="0">
+        <span class="reco-tag">YOUR DOOR</span>
+        <div class="num">03</div>
+        <h3>AI Agents &amp; Automation</h3>
+        <p>Chatbots, WhatsApp workflows and lead systems that answer customers while you sleep. Try the working demos in the Lab — they run on your own API key.</p>
+        <div class="tools"><span class="tool">AI chat agents</span><span class="tool">WhatsApp automation</span><span class="tool">Lead capture</span><span class="tool">BYOK tools</span></div>
+        <div class="price">Automation from <span>₹8,000</span> · Lab tools <span>free</span></div>
+      </article>
+      <article class="portal rv" data-door="software" tabindex="0">
+        <span class="reco-tag">YOUR DOOR</span>
+        <div class="num">04</div>
+        <h3>Software &amp; Product Development</h3>
+        <p>Idea to shipped product, solo — design, code, deploy, iterate. Line Free India, SatyamLabs and CodeAtlas were all built exactly this way.</p>
+        <div class="tools"><span class="tool">MVP builds</span><span class="tool">TypeScript</span><span class="tool">Firestore</span><span class="tool">Android (Capacitor)</span></div>
+        <div class="price">Web apps from <span>₹35,000</span></div>
+      </article>
+      <article class="portal rv" data-door="content" tabindex="0">
+        <span class="reco-tag">YOUR DOOR</span>
+        <div class="num">05</div>
+        <h3>Content &amp; Digital Branding</h3>
+        <p>One content stream, adapted per platform — Instagram, LinkedIn, X, YouTube, Threads and Facebook, running daily. Build-in-public storytelling that compounds.</p>
+        <div class="tools"><span class="tool">Content systems</span><span class="tool">Scriptwriting (Hindi / English)</span><span class="tool">AI explainers</span><span class="tool">Brand pages</span></div>
+        <div class="price">Systems from <span>₹8,000/mo</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Originals</p>
+      <h2>Work that ships.</h2>
+      <p>Not mockups. Every project below is live on the internet today — open it, use it, break it. That is the portfolio.</p>
+    </div>
+    <div class="work-grid">
+      <article class="work-card rv">
+        <div class="shot"><img src="assets/projects/line-free-india-salon-desktop.png" alt="Line Free India — salon page with live queue status"></div>
+        <div class="work-body">
+          <div class="w-num">01 · MY STARTUP</div>
+          <h3>Line Free India</h3>
+          <p>A queue-free booking and token system for salons. Customers take a token from home, watch the live queue and walk in exactly on time. Built solo — design, code, deploy.</p>
+          <div class="tags"><span class="tool">React</span><span class="tool">Tailwind</span><span class="tool">Firebase</span><span class="tool">Bilingual EN/HI</span></div>
+          <span class="status dev">LIVE · PRE-LAUNCH MVP</span>
+          <div class="work-links"><a class="btn btn-solid" href="https://line-free-india.web.app" target="_blank" rel="noopener" style="padding:10px 18px;font-size:.85rem">Visit live site ↗</a></div>
+        </div>
+      </article>
+      <article class="work-card rv">
+        <div class="shot"><img src="assets/projects/ai-agents-lab-desktop.png" alt="AI Agents Lab — free AI tools landing page"></div>
+        <div class="work-body">
+          <div class="w-num">02 · AI LAB</div>
+          <h3>AI Agents Lab</h3>
+          <p>Nine free AI tools that run entirely in your browser on your own API key — study buddy, code mentor, script writer, a WhatsApp automation builder and more. No sign-up, no server.</p>
+          <div class="tags"><span class="tool">Vanilla JS</span><span class="tool">Gemini API</span><span class="tool">WhatsApp Cloud API</span><span class="tool">BYOK / BYOC</span></div>
+          <span class="status">LIVE · FREE TO USE</span>
+          <div class="work-links"><a class="btn btn-solid" href="https://satyamkumar-builds.github.io/ai-agents-lab/" target="_blank" rel="noopener" style="padding:10px 18px;font-size:.85rem">Try the tools ↗</a></div>
+        </div>
+      </article>
+      <article class="work-card rv">
+        <div class="shot"><img src="assets/projects/satyamlabs-desktop.png" alt="SatyamLabs — coding IDE that runs on a phone"></div>
+        <div class="work-body">
+          <div class="w-num">03 · DEVELOPER TOOL</div>
+          <h3>SatyamLabs</h3>
+          <p>A coding workspace that runs on a phone. C, C++, Python and Java — online and offline — plus HTML/CSS/JS with live preview. Built because my laptop was not always there; the code still had to be.</p>
+          <div class="tags"><span class="tool">JavaScript</span><span class="tool">Android APK v3.1.4</span><span class="tool">Offline-first</span></div>
+          <span class="status">LIVE · FREE</span>
+          <div class="work-links"><a class="btn btn-solid" href="https://satyamkumar-builds.github.io/SatyamLabs/" target="_blank" rel="noopener" style="padding:10px 18px;font-size:.85rem">Open the IDE ↗</a></div>
+        </div>
+      </article>
+      <article class="work-card rv">
+        <div class="shot"><img src="assets/projects/codeatlas-desktop.png" alt="CodeAtlas — structured programming learning platform"></div>
+        <div class="work-body">
+          <div class="w-num">04 · LEARNING PLATFORM</div>
+          <h3>CodeAtlas</h3>
+          <p>A structured map from computer-science fundamentals to AI engineering — 31 tracks, 1,965+ lessons and roadmaps that tell you what to learn next instead of leaving you lost.</p>
+          <div class="tags"><span class="tool">React</span><span class="tool">TypeScript</span><span class="tool">Firebase</span></div>
+          <span class="status">LIVE · FREE</span>
+          <div class="work-links"><a class="btn btn-solid" href="https://codeatlas.web.app" target="_blank" rel="noopener" style="padding:10px 18px;font-size:.85rem">Start learning ↗</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Season 1 · The Work On Camera</p>
+      <h2>Press play. Judge the edit.</h2>
+      <p>Every video below was scripted, produced and edited by me — including a daily AI-avatar series published across Instagram, YouTube, X and Threads. This is what my editing actually looks like.</p>
+    </div>
+    <div class="video-grid">
+      <article class="vcard rv">
+        <video controls preload="none" poster="assets/posters/08-upi-payment-edit.jpg" src="assets/videos/08-upi-payment-edit.mp4"></video>
+        <div class="v-body"><h3>What happens when you pay by UPI?</h3><p>Explainer edit · 2026</p></div>
+      </article>
+      <article class="vcard rv">
+        <video controls preload="none" poster="assets/posters/09-queue-system-zero-budget-edit.jpg" src="assets/videos/09-queue-system-zero-budget-edit.mp4"></video>
+        <div class="v-body"><h3>I built a queue system on a ₹0 budget</h3><p>Founder story edit · 2026</p></div>
+      </article>
+      <article class="vcard rv">
+        <video controls preload="none" poster="assets/posters/05-day1-napkin-ai.jpg" src="assets/videos/05-day1-napkin-ai.mp4"></video>
+        <div class="v-body"><h3>20 Din, 20 AI Tools — Day 1: Napkin AI</h3><p>AI avatar series · 2026</p></div>
+      </article>
+      <article class="vcard rv">
+        <video controls preload="none" poster="assets/posters/07-study-smarter-most-liked.jpg" src="assets/videos/07-study-smarter-most-liked.mp4"></video>
+        <div class="v-body"><h3>Stop studying harder. Study smarter.</h3><p>Most-liked explainer · 2026</p></div>
+      </article>
+      <article class="vcard wide rv">
+        <video controls preload="none" poster="assets/posters/10-codeatlas-intro.jpg" src="assets/videos/10-codeatlas-intro.mp4"></video>
+        <div class="v-body"><h3>CodeAtlas — product intro</h3><p>Launch edit · 2026</p></div>
+      </article>
+      <article class="vcard wide rv">
+        <video controls preload="none" poster="assets/posters/11-line-free-india-future-of-waiting.jpg" src="assets/videos/11-line-free-india-future-of-waiting.mp4"></video>
+        <div class="v-body"><h3>Line Free India — the future of waiting</h3><p>Product film edit · 2026</p></div>
+      </article>
+      <article class="vcard rv">
+        <video controls preload="none" poster="assets/posters/06-line-free-india-promo.jpg" src="assets/videos/06-line-free-india-promo.mp4"></video>
+        <div class="v-body"><h3>Line Free India — promo (Hinglish)</h3><p>Product promo · 2026</p></div>
+      </article>
+      <article class="vcard rv">
+        <video controls preload="none" poster="assets/posters/01-intro-reel.jpg" src="assets/videos/01-intro-reel.mp4"></video>
+        <div class="v-body"><h3>My intro — still learning, still building</h3><p>Personal intro · 2026</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="lab" style="padding-top:0">
+  <div class="wrap">
+    <div class="lab-band rv">
+      <p class="kicker">AI Agents Lab · Live Demos</p>
+      <h2 style="font-family:'Archivo';font-weight:900;font-size:clamp(1.5rem,3.4vw,2.2rem);text-transform:uppercase;margin:8px 0 10px">Do not take my word for it. Run the tools.</h2>
+      <p style="color:var(--muted);max-width:640px">Nine working tools, free, in your browser. Your API key never leaves your device — there is no server and nothing is uploaded. Demos are labelled demos, honestly.</p>
+      <div class="lab-tools">
+        <div class="lab-tool"><b>StudyBuddy AI</b><span>Turns any topic into simple notes and questions</span></div>
+        <div class="lab-tool"><b>CodeMentor AI</b><span>Explains code and reviews your logic</span></div>
+        <div class="lab-tool"><b>Salon &amp; Business Assistant</b><span>A support agent you can rebrand for your business</span></div>
+        <div class="lab-tool"><b>ScriptWriter AI</b><span>Hooks, body and CTA for reels in seconds</span></div>
+        <div class="lab-tool"><b>FlowStudio</b><span>Visual WhatsApp automation builder — connect your own Meta API</span></div>
+        <div class="lab-tool"><b>WhatsApp Message Studio</b><span>45 ready business message templates, no key needed</span></div>
+        <div class="lab-tool"><b>Social Post Generator</b><span>Captions and post ideas on demand</span></div>
+        <div class="lab-tool"><b>Email Replier</b><span>Professional replies drafted in your tone</span></div>
+        <div class="lab-tool"><b>Profile Optimizer</b><span>Sharper LinkedIn and Fiverr bios</span></div>
+      </div>
+      <a class="btn btn-solid" href="https://satyamkumar-builds.github.io/ai-agents-lab/" target="_blank" rel="noopener" style="margin-top:24px">Open the Lab ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Pricing</p>
+      <h2>Honest rates. No surprises.</h2>
+      <p>Starting prices, shown upfront. Final quote depends on scope — and you approve it before any work begins.</p>
+    </div>
+    <div class="price-grid">
+      <article class="price-card rv">
+        <h3>Video Editing</h3>
+        <div class="from">Shorts &amp; reels, from</div>
+        <div class="amount">$10</div>
+        <ul>
+          <li><span>1 short</span><b>$10</b></li>
+          <li><span>3 shorts</span><b>$20</b></li>
+          <li><span>5 shorts</span><b>$35</b></li>
+          <li><span>Monthly retainer · 8 reels</span><b>₹8,000/mo</b></li>
+          <li><span>Monthly retainer · 12 reels</span><b>₹18,000/mo</b></li>
+        </ul>
+      </article>
+      <article class="price-card rv">
+        <h3>Websites &amp; Web Apps</h3>
+        <div class="from">One-page business site, from</div>
+        <div class="amount">₹12,000</div>
+        <ul>
+          <li><span>One-page site</span><b>₹12,000</b></li>
+          <li><span>Business website</span><b>₹25,000</b></li>
+          <li><span>Web application</span><b>₹35,000</b></li>
+          <li><span>On Fiverr, from</span><b>$35</b></li>
+        </ul>
+      </article>
+      <article class="price-card rv">
+        <h3>AI Automation</h3>
+        <div class="from">Lead &amp; workflow systems, from</div>
+        <div class="amount">₹8,000</div>
+        <ul>
+          <li><span>Lead-capture system</span><b>₹8,000</b></li>
+          <li><span>System + follow-ups</span><b>₹14,000</b></li>
+          <li><span>Full workflow setup</span><b>₹20,000</b></li>
+          <li><span>AI Agents Lab demos</span><b>Free</b></li>
+        </ul>
+      </article>
+    </div>
+    <p class="price-note rv">Students and early-stage founders: tell me your budget honestly — I would rather build something real inside it than quote something fake. UGC-style ad videos for your brand or product? Yes, I can create those too — ask.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">My Story</p>
+      <h2>Season 1. Still being written.</h2>
+    </div>
+    <p class="about-text rv">I am <b>Satyam Kumar</b>, a first-year BTech CSE student at Gaya College of Engineering and the founder of <b>Line Free India</b> — a queue-free booking and token system for salons that I designed, built and shipped solo. It is live and pre-launch; I say that plainly because the real work is still ahead. Alongside it I built <b>SatyamLabs</b>, a coding IDE that runs on a phone, and <b>CodeAtlas</b>, a programming-learning platform with 1,965+ lessons. Every project started as something I needed myself. I also make videos — a daily series teaching one lesser-known AI tool a day. Long term, I want to work where AI, energy and space meet. For now: <b>learn, build, ship, repeat.</b></p>
+    <div class="levels">
+      <div class="level rv">
+        <h3>✅ What I Do</h3>
+        <ul>
+          <li>Short-form video editing &amp; AI avatar production</li>
+          <li>React + Firebase websites and web apps</li>
+          <li>AI chat agents &amp; WhatsApp workflows (working demos in the Lab)</li>
+          <li>Daily content systems across 6 platforms</li>
+        </ul>
+      </div>
+      <div class="level rv">
+        <h3>🔨 What I am Building</h3>
+        <ul>
+          <li>Line Free India — salon onboarding, pre-launch</li>
+          <li>20 Din, 20 AI Tools — daily avatar series</li>
+          <li>AI Agents Lab — new tools, in public</li>
+          <li>My full-stack craft — CSS done, JavaScript deep-dive on</li>
+        </ul>
+      </div>
+      <div class="level rv">
+        <h3>🔭 What I am Exploring</h3>
+        <ul>
+          <li>Backend engineering — APIs, databases, system design</li>
+          <li>AI × Energy × Space — the long-term direction</li>
+          <li>3D and motion on the web</li>
+          <li>Financial literacy for founders</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-cta rv">
+      <p class="kicker">Got a project?</p>
+      <h2>Let us build it together.</h2>
+      <p>One message is enough — a video to edit, a website to launch, a workflow to automate. I reply personally, usually the same day. No calls needed; chat works.</p>
+      <a class="btn btn-solid" href="mailto:satyamkumar.builds@gmail.com?subject=Project%20enquiry%20—%20Satyam%20Portfolio">✉ satyamkumar.builds@gmail.com</a>
+    </div>
+    <div class="socials">
+      <a class="soc" href="https://www.linkedin.com/in/satyam-kumar-202b15417/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="soc" href="https://www.instagram.com/satyam_kumar.560" target="_blank" rel="noopener">Instagram</a>
+      <a class="soc" href="https://x.com/satyam_builds" target="_blank" rel="noopener">X</a>
+      <a class="soc" href="https://www.youtube.com/@satyamlearns" target="_blank" rel="noopener">YouTube</a>
+      <a class="soc" href="https://github.com/satyamkumar-builds" target="_blank" rel="noopener">GitHub</a>
+      <a class="soc" href="https://www.fiverr.com/satyam_kumar5" target="_blank" rel="noopener">Fiverr</a>
+      <a class="soc" href="https://www.threads.com/@satyam_kumar.560" target="_blank" rel="noopener">Threads</a>
+    </div>
+    <div class="tbc">TO BE CONTINUED…</div>
+    <div class="foot-base">
+      <span>© 2026 Satyam Kumar · Gaya, Bihar, India</span>
+      <span>Built solo. No lines. No waiting. Just building.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal" id="introModal" role="dialog" aria-modal="true" aria-label="Intro video">
+  <div class="modal-box">
+    <div class="modal-bar"><span>My Intro — Satyam Kumar</span><button class="modal-close" id="modalClose" type="button" aria-label="Close">✕</button></div>
+    <video id="introVideo" controls preload="none" poster="assets/posters/01-intro-reel.jpg" src="assets/videos/01-intro-reel.mp4"></video>
+  </div>
+</div>
+
+<script>
+// role flipper
+(function(){
+  var roles=["Video Editor","Web Developer","AI Builder","Founder"];
+  var el=document.getElementById('flipRole'),ct=document.getElementById('flipCount'),i=0;
+  setInterval(function(){
+    i=(i+1)%roles.length;
+    el.textContent=roles[i];
+    ct.textContent=('0'+(i+1))+' / 04';
+    el.classList.remove('flip-anim'); void el.offsetWidth; el.classList.add('flip-anim');
+  },2200);
+})();
+// visitor selector
+(function(){
+  var map={
+    business:{door:'web',note:'<b>Business owners</b> usually start at Door 02 — a website that brings enquiries — and Door 03, automation that answers customers for you.'},
+    creator:{door:'video',note:'<b>Creators</b> — Door 01 is yours: editing that keeps viewers watching, plus UGC-style ad videos for the brands you work with.'},
+    student:{door:'ai',note:'<b>Students</b> — start free: the AI Agents Lab (Door 03) and CodeAtlas under Work. Everything there runs in your browser.'},
+    founder:{door:'software',note:'<b>Founders</b> — Door 04: idea to shipped MVP, the same way Line Free India was built. Door 05 if you need the content engine too.'}
+  };
+  var btns=document.querySelectorAll('.v-btn'),note=document.getElementById('vNote');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    btns.forEach(function(x){x.classList.remove('active')}); b.classList.add('active');
+    var m=map[b.dataset.v]; note.innerHTML=m.note;
+    document.querySelectorAll('.portal').forEach(function(p){p.classList.toggle('reco',p.dataset.door===m.door)});
+    var t=document.querySelector('.portal[data-door="'+m.door+'"]');
+    if(t){t.scrollIntoView({behavior:'smooth',block:'center'})}
+  })});
+})();
+// portal 3D tilt + glow tracking
+(function(){
+  if(window.matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.portal').forEach(function(card){
+    card.addEventListener('pointermove',function(e){
+      var r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+      card.style.transform='perspective(900px) rotateY('+((x-.5)*10)+'deg) rotateX('+((.5-y)*8)+'deg) translateY(-3px)';
+      card.style.setProperty('--mx',(x*100)+'%'); card.style.setProperty('--my',(y*100)+'%');
+    });
+    card.addEventListener('pointerleave',function(){card.style.transform=''});
+  });
+})();
+// reveal on scroll
+(function(){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+})();
+// intro modal
+(function(){
+  var m=document.getElementById('introModal'),v=document.getElementById('introVideo');
+  document.getElementById('playIntro').addEventListener('click',function(){m.classList.add('open');v.play().catch(function(){})});
+  function close(){m.classList.remove('open');v.pause()}
+  document.getElementById('modalClose').addEventListener('click',close);
+  m.addEventListener('click',function(e){if(e.target===m)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+})();
+</script>
+</body>
+</html>
